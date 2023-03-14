@@ -9,7 +9,7 @@ menu = """
 
 @app.route("/")
 def hello_world():
-  return menu + "Olá, mundo! Esse é o meu site. (Graziela França)"
+  return menu + "Olá, mundo! Esse é o meu site. (Sérgio Vieira)"
 
 @app.route("/sobre")
 def sobre():
