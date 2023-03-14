@@ -7,7 +7,7 @@ menu = """ #tem três aspas pq é string multilinhas
 """
 
 @app.route("/")
-def hello_world():
+def index():
   return menu + "Olá, mundo! Esse é meu site. (Sérgio Vieira)"
 
 @app.route("/sobre")
