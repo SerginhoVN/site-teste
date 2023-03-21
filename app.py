@@ -1,12 +1,14 @@
 import os
+
 import requests
 from flask import Flask
 from tchan import ChannelScraper
 
-TELEGRAM_API_KEY = OS.ENVIRON["TELEGRAM_API_KEY"]
-TELEGRAM_ADMIN_KEY = OS.ENVIRON["TELEGRAM_ADMIN_KEY"]
 
+TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY"]
+TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID"]
 app = Flask(__name__)
+
 
 def ultimas_promocoes():
   scraper = ChannelScraper()
@@ -19,6 +21,7 @@ def ultimas_promocoes():
     if contador == 10:
       return resultado
 
+    
 menu = """
 <a href="/">Página inicial</a> | <a href="/promocoes">PROMOÇÕES</a> | <a href="/sobre">Sobre</a> | <a href="/contato">Contato</a>
 <br>
@@ -69,5 +72,5 @@ def promocoes2():
 @app.route("/dedoduro")
 def dedoduro():
   mensagem = {"chat_id": TELEGRAM_ADMIN_ID, "text": "Alguém acessou a página dedo duro!"}
-  requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendmessage", data=mensagem)
-  return "Mensagem Enviada."
+  requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendMessage", data=mensagem)
+  return "Mensagem enviada."
