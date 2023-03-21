@@ -1,5 +1,10 @@
+import os
+import requests
 from flask import Flask
 from tchan import ChannelScraper
+
+TELEGRAM_API_KEY = OS.ENVIRON["TELEGRAM_API_KEY"]
+TELEGRAM_ADMIN_KEY = OS.ENVIRON["TELEGRAM_ADMIN_KEY"]
 
 app = Flask(__name__)
 
@@ -60,3 +65,9 @@ def promocoes2():
     if contador == 10:
       break
   return conteudo + "</ul>"
+
+@app.route("/dedoduro")
+def dedoduro():
+  mensagem = {"chat_id": TELEGRAM_ADMIN_ID, "text": "Alguém acessou a página dedo duro!"}
+  requests.post(f"https://api.telrgram.org/bot{TELEGRAM_API_KEY}/sendmessage", data=mensagem)
+  return "Mensagem Enviada."
